@@ -1,3 +1,4 @@
+%https://github.com/flyingwolfz/double-phase-hologram-matlab
 clc
 clear
 p=im2double(rgb2gray(imread('triss1024.png')));
