@@ -8,8 +8,8 @@ pitch=8*10^(-3);
 lambda=638*10^(-6);
 B=rand(1024,1024);
 quan1=p.*exp(1i*2*pi*B);
-quan1=ASM('shift','nocut','forward','limit',quan1,1,300,pitch,lambda);
-quan2=ASM('shift','nocut','forward','limit',p,1,300,pitch,lambda);
+quan1=ASM('nocut','forward','limit',quan1,1,300,pitch,lambda);
+quan2=ASM('nocut','forward','limit',p,1,300,pitch,lambda);
 ang=angle(quan2);
 amp=abs(quan2);
 amp=amp./max(max(amp));
@@ -47,8 +47,8 @@ imshow(quan2);
 
 quan1=exp(1i*2*pi*quan1);
 quan2=exp(1i*2*pi*quan2);
-image1=ASM('noshift','nocut','backward','limit',quan1,1,300,pitch,lambda);
-image2=ASM('noshift','nocut','backward','limit',quan2,1,300,pitch,lambda);
+image1=ASM('nocut','backward','limit',quan1,1,300,pitch,lambda);
+image2=ASM('nocut','backward','limit',quan2,1,300,pitch,lambda);
 
 image1=abs(image1);
 image2=abs(image2);
