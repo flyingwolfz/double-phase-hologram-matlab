@@ -8,8 +8,11 @@ pitch=8*10^(-3);
 lambda=638*10^(-6);
 B=rand(1024,1024);
 quan1=p.*exp(1i*2*pi*B);
-quan1=ASM('nocut','forward','limit',quan1,1,300,pitch,lambda);
-quan2=ASM('nocut','forward','limit',p,1,300,pitch,lambda);
+z=400;
+%quan1=ASM('nocut','forward','limit',quan1,1,z,pitch,lambda);
+%quan2=ASM('nocut','forward','limit',p,1,z,pitch,lambda);
+quan1=ASMshift('shift','cut','forward','limit',quan1,2,z,pitch,lambda);
+quan2=ASMshift('shift','cut','forward','limit',p,2,z,pitch,lambda);
 ang=angle(quan2);
 ang=mod(ang,2*pi);
 amp=abs(quan2);
@@ -48,9 +51,10 @@ imshow(quan2);
 
 quan1=exp(1i*2*pi*quan1);
 quan2=exp(1i*2*pi*quan2);
-image1=ASM('nocut','backward','limit',quan1,1,300,pitch,lambda);
-image2=ASM('nocut','backward','limit',quan2,1,300,pitch,lambda);
-
+%image1=ASM('nocut','backward','limit',quan1,1,z,pitch,lambda);
+%image2=ASM('nocut','backward','limit',quan2,1,z,pitch,lambda);
+image1=ASMshift('noshift','cut','backward','limit',quan1,2,z,pitch,lambda);
+image2=ASMshift('noshift','cut','backward','limit',quan2,2,z,pitch,lambda);
 image1=abs(image1);
 image2=abs(image2);
 
