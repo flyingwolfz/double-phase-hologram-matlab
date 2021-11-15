@@ -11,6 +11,7 @@ quan1=p.*exp(1i*2*pi*B);
 quan1=ASM('nocut','forward','limit',quan1,1,300,pitch,lambda);
 quan2=ASM('nocut','forward','limit',p,1,300,pitch,lambda);
 ang=angle(quan2);
+ang=mod(ang,2*pi);
 amp=abs(quan2);
 amp=amp./max(max(amp));
 coss=acos(amp);
